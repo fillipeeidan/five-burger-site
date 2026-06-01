@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Five Burger SP | O Verdadeiro Burger de Respeito</title>
+    <meta name="description" content="Experimente os hambúrgueres artesanais Five Burger na Vila Carrão. Sabor supremo, maionese verde artesanal, combos exclusivos e atendimento cinco estrelas.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="logo_icon.png">
+    
+    <!-- Google Fonts & Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar (Liquid Glass Style) -->
+    <nav class="header-nav" id="main-nav">
+        <a href="#hero-section" class="logo-container">
+            <img src="logo.png" alt="Five Burger Logo" class="logo-img">
+            <span class="brand-name">Five Burger</span>
+        </a>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hero-section" class="nav-link active">Home</a></li>
+            <li><a href="#sobre" class="nav-link">Sobre</a></li>
+            <li><a href="#destaques" class="nav-link">Destaques</a></li>
+            <li><a href="#cardapio" class="nav-link">Cardápio</a></li>
+            <li><a href="#depoimentos" class="nav-link">Avaliações</a></li>
+            <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+        
+        <button class="nav-cta" onclick="toggleCart()">
+            Ver Sacola
+        </button>
+        
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu Celular">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section (Scroll-Controlled Video Split Screen) -->
+    <div class="hero-scroll-wrapper" id="hero-section">
+        <div class="hero-sticky-container">
+            <!-- Left Column: Content -->
+            <div class="hero-content-col">
+                <div class="hero-content-left">
+                    <h1 class="hero-title">Hambúrguer <span class="gradient-text">Artesanal de Verdade</span>, feito para quem leva <span class="gradient-text">Sabor a Sério</span>.</h1>
+                    <p class="hero-desc">Da carne ao molho da casa: cada detalhe foi pensado para entregar um burger acima da média.</p>
+                    <div class="hero-actions">
+                        <a href="#cardapio" class="btn-primary">
+                            <span>Ver cardápio</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Video -->
+            <div class="hero-video-col">
+                <video class="hero-video-split" id="hero-video" muted playsinline preload="auto">
+                    <source src="burger_hero_optimized.mp4" type="video/mp4">
+                </video>
+                <div class="hero-video-gradient-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper (hides horizontal scroll for sub-elements without breaking sticky) -->
+    <div class="page-content-wrapper">
+
+    <!-- About Section (Asymmetric collage layout) -->
+    <section class="about-section section-padding" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content reveal">
+                    <span class="section-tag">Nossa Trajetória</span>
+                    <h2 class="section-title">O que faz tanta gente voltar para a Five?</h2>
+                    <p class="about-text text-secondary">
+                        Na Five, cada burger é preparado com ingredientes selecionados, receitas autorais e aquele cuidado que só uma casa apaixonada pelo que faz consegue entregar.<br><br>Há 9 anos transformando ingredientes simples em experiências que fazem o cliente querer repetir.
+                    </p>
+                </div>
+                
+                <div class="about-images-collage reveal reveal-delay-2">
+                    <div class="collage-img collage-img-1">
+                        <img src="about_burger_caramelized.jpg" alt="Hambúrguer artesanal Five Burger">
+                    </div>
+                    <div class="collage-img collage-img-2">
+                        <img src="about_fries_cheddar.jpg" alt="Batatas rústicas com cheddar e bacon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Highlights Section -->
+    <section class="banner-section section-padding" id="destaques">
+        <div class="container">
+            <div class="banner-grid">
+                <!-- Highlight 1: Potato Canola -->
+                <div class="banner-card reveal">
+                    <img src="batata_1.png" alt="Batata Crocante" class="banner-card-img">
+                    <h3 class="banner-card-title">Batatas Rústicas</h3>
+                    <p class="banner-card-desc">Crocantes por fora, macias por dentro. Temperadas com lemon pepper e alecrim fresco.</p>
+                    <button class="nav-cta" onclick="scrollAndFilter('burgers')">Ver Porções</button>
+                </div>
+                
+                <!-- Center Featured Combo -->
+                <div class="banner-main-col reveal reveal-delay-1">
+                    <img src="burger_trio.png" alt="Combo Destaque" class="banner-main-img">
+                    <h2 class="banner-main-title">Conheça Nossos Combos</h2>
+                    <p class="banner-main-desc">A melhor experiência completa: burger clássico grelhado na brasa, batata frita ondulada sequinha e refrigerante gelado.</p>
+                    <button class="btn-primary" onclick="scrollAndFilter('combos')">Pedir Combos</button>
+                </div>
+                
+                <!-- Highlight 3: Potato with Ribs -->
+                <div class="banner-card reveal reveal-delay-2">
+                    <img src="batata_2.png" alt="Batata com Costela" class="banner-card-img">
+                    <h3 class="banner-card-title">Fritas com Costela</h3>
+                    <p class="banner-card-desc">Generosa porção de batatas canoas cobertas com costela suína desfiada, muçarela e molho barbecue.</p>
+                    <button class="nav-cta" onclick="scrollAndFilter('burgers')">Ver Lanches</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu Section -->
+    <section class="menu-section section-padding" id="cardapio">
+        <div class="container">
+            <div class="menu-header reveal">
+                <span class="section-tag">Nosso Menu</span>
+                <h2 class="section-title">Escolha seu Five Estrelas</h2>
+                <p>Nossos hambúrgueres artesanais levam um blend secreto de carnes de 160g moldadas e grelhadas diariamente.</p>
+            </div>
+            
+            <!-- Category Tabs -->
+            <div class="menu-filters reveal reveal-delay-1">
+                <button class="filter-btn active" data-category="todos">Todo Cardápio</button>
+                <button class="filter-btn" data-category="combos">Combos da Casa</button>
+                <button class="filter-btn" data-category="burgers">Burgers Artesanais</button>
+                <button class="filter-btn" data-category="sobremesas">Doces & Milkshakes</button>
+                <button class="filter-btn" data-category="bebidas">Bebidas & Drinks</button>
+            </div>
+            
+            <!-- Dynamic Menu Grid -->
+            <div class="menu-grid reveal reveal-delay-2" id="menu-items-grid">
+                
+                <!-- Product 1: Five Salad Combo (Combos) -->
+                <div class="menu-card" data-item-category="combos">
+                    <div class="menu-card-img-wrapper">
+                        <img src="combo_five_salad.jpeg" alt="Combo Five Salad" class="menu-card-img">
+                        <span class="menu-card-tag">Promo Terça à Quinta</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Combo Five Salad</h3>
+                        <p class="menu-card-desc">Pão brioche selado na manteiga, blend suculento de 160g, muçarela derretida, alface americana fresca, tomate, maionese verde da casa. Acompanha fritas sequinhas e refrigerante lata.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 57,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Combo Five Salad ao carrinho" onclick="addToCart('Combo Five Salad', 57.90, 'combo_five_salad.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Five Cheese Combo (Combos) -->
+                <div class="menu-card" data-item-category="combos">
+                    <div class="menu-card-img-wrapper">
+                        <img src="combo_five_cheese.jpeg" alt="Combo Five Cheese" class="menu-card-img">
+                        <span class="menu-card-tag">Mais Vendido</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Combo Five Cheese</h3>
+                        <p class="menu-card-desc">Pão brioche macio, blend suculento de 160g grelhado na brasa, dupla camada de queijo muçarela e a nossa maionese verde artesanal. Acompanha batata frita e refrigerante lata.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 55,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Combo Five Cheese ao carrinho" onclick="addToCart('Combo Five Cheese', 55.90, 'combo_five_cheese.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3: Five Bacon Combo (Combos) -->
+                <div class="menu-card" data-item-category="combos">
+                    <div class="menu-card-img-wrapper">
+                        <img src="combo_five_bacon.jpeg" alt="Combo Five Bacon" class="menu-card-img">
+                        <span class="menu-card-tag">Favorito</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Combo Five Bacon</h3>
+                        <p class="menu-card-desc">Pão brioche selado, blend de 160g grelhado na brasa, queijo muçarela derretido, fatias de bacon crocante super sequinhas e maionese verde da casa. Acompanha fritas e refri.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 59,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Combo Five Bacon ao carrinho" onclick="addToCart('Combo Five Bacon', 59.90, 'combo_five_bacon.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4: Five Salad (Burgers) -->
+                <div class="menu-card" data-item-category="burgers">
+                    <div class="menu-card-img-wrapper">
+                        <img src="burger_five_salad.jpeg" alt="Five Salad" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Five Salad</h3>
+                        <p class="menu-card-desc">A versão avulsa do clássico: pão de brioche tostado, blend bovino artesanal de 160g, muçarela, alface, rodelas de tomate fresco e maionese verde.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 36,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Five Salad ao carrinho" onclick="addToCart('Five Salad', 36.90, 'burger_five_salad.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Five Double Cheese (Burgers) -->
+                <div class="menu-card" data-item-category="burgers">
+                    <div class="menu-card-img-wrapper">
+                        <img src="burger_five_double.jpeg" alt="Five Double Cheese" class="menu-card-img">
+                        <span class="menu-card-tag">Monstro</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Five Double Cheese</h3>
+                        <p class="menu-card-desc">Para quem tem fome de verdade: dois blends suculentos de 160g (320g de carne), queijo duplo muçarela derretido no abafador e maionese verde artesanal.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 46,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Five Double Cheese ao carrinho" onclick="addToCart('Five Double Cheese', 46.90, 'burger_five_double.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Five Catupiry (Burgers) -->
+                <div class="menu-card" data-item-category="burgers">
+                    <div class="menu-card-img-wrapper">
+                        <img src="burger_five_catupiry.jpeg" alt="Five Catupiry" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Five Catupiry</h3>
+                        <p class="menu-card-desc">Pão de brioche, blend artesanal de carne bovina de 160g, uma camada muito generosa do legítimo requeijão Catupiry aquecido e fatias de bacon crocante.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 47,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Five Catupiry ao carrinho" onclick="addToCart('Five Catupiry', 47.90, 'burger_five_catupiry.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Choripan Five (Burgers) -->
+                <div class="menu-card" data-item-category="burgers">
+                    <div class="menu-card-img-wrapper">
+                        <img src="burger_choripan.jpeg" alt="Choripán Five" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Choripán Five</h3>
+                        <p class="menu-card-desc">Inspirado no clássico argentino: pão de baguete artesanal crocante, deliciosa linguiça toscana grelhada na churrasqueira e molho chimichurri da casa.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 44,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Choripán Five ao carrinho" onclick="addToCart('Choripán Five', 44.90, 'burger_choripan.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Batata Five Ribs (Burgers/Porcoes) -->
+                <div class="menu-card" data-item-category="burgers">
+                    <div class="menu-card-img-wrapper">
+                        <img src="batata_five_ribs.jpeg" alt="Batata Five Ribs" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Batata Five Ribs</h3>
+                        <p class="menu-card-desc">Nossa incrível porção de batatas fritas canoas super crocantes cobertas com costela suína assada lentamente no forno, muçarela e molho barbecue artesanal.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 49,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Batata Five Ribs ao carrinho" onclick="addToCart('Batata Five Ribs', 49.90, 'batata_five_ribs.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9: Milkshake Especial (Sobremesas) -->
+                <div class="menu-card" data-item-category="sobremesas">
+                    <div class="menu-card-img-wrapper">
+                        <img src="milkshake_especiais.jpeg" alt="Milkshake Especial" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Milkshake Especial</h3>
+                        <p class="menu-card-desc">Cremoso e gelado, mesclando sorvete de baunilha premium com creme de avelã Nutella genuíno e pedacinhos crocantes de bolacha Oreo triturada.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 31,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Milkshake Especial ao carrinho" onclick="addToCart('Milkshake Especial', 31.90, 'milkshake_especiais.jpeg')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10: Brownie de Chocolate (Sobremesas) -->
+                <div class="menu-card" data-item-category="sobremesas">
+                    <div class="menu-card-img-wrapper">
+                        <img src="brownie.png" alt="Brownie de Chocolate com Sorvete" class="menu-card-img">
+                        <span class="menu-card-tag">Caseiro</span>
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Brownie de Chocolate</h3>
+                        <p class="menu-card-desc">Deliciosa fatia de brownie artesanal de chocolate com nozes picadas, acompanhado de uma bola de sorvete de iogurte e calda de ganache quente.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 19,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Brownie de Chocolate ao carrinho" onclick="addToCart('Brownie de Chocolate', 19.90, 'brownie.png')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11: Pink Lemonade (Bebidas) -->
+                <div class="menu-card" data-item-category="bebidas">
+                    <div class="menu-card-img-wrapper">
+                        <img src="drink_pink_lemonade.png" alt="Pink Lemonade" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Pink Lemonade</h3>
+                        <p class="menu-card-desc">Suco natural refrescante de limão siciliano espremido na hora com xarope artesanal de frutas vermelhas e pedras de gelo cristalinas.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 17,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Pink Lemonade ao carrinho" onclick="addToCart('Pink Lemonade', 17.90, 'drink_pink_lemonade.png')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12: Cerveja Corona (Bebidas) -->
+                <div class="menu-card" data-item-category="bebidas">
+                    <div class="menu-card-img-wrapper">
+                        <img src="drink_corona.png" alt="Cerveja Corona" class="menu-card-img">
+                    </div>
+                    <div class="menu-card-content">
+                        <h3 class="menu-card-title">Cerveja Corona</h3>
+                        <p class="menu-card-desc">Cerveja Corona Extra long neck super gelada, servida com uma fatia de limão fresco para realçar o sabor e refrescância.</p>
+                        <div class="menu-card-footer">
+                            <span class="menu-card-price">R$ 15,90</span>
+                            <button class="btn-add-cart" aria-label="Adicionar Cerveja Corona ao carrinho" onclick="addToCart('Cerveja Corona', 15.90, 'drink_corona.png')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Google Reviews Section -->
+    <section class="testimonials-section section-padding" id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header reveal">
+                <div class="header-left">
+                    <span class="section-tag">Depoimentos</span>
+                    <h2 class="section-title">Quem conhece a Five volta, e as<br>avaliações no Google mostram isso.</h2>
+                </div>
+                
+                <div class="google-rating-summary">
+                    <div class="rating-info">
+                        <div class="stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <span class="rating-text">Nota 4.5 estrelas<br>baseado no <span class="google-colored-brand"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></span></span>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prev-review" aria-label="Depoimento Anterior">
+                        <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button class="carousel-btn" id="next-review" aria-label="Próximo Depoimento">
+                        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="reviews-track">
+                    
+                    <!-- Review 1: Daiany -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Delícia de lugar, comida e serviço!!! Incrível de verdade. Comida excelente, servem rápido, atendimento maravilhoso. Fomos em 6, não precisamos esperar mesa, fomos super bem atendidos do começo ao fim. Modifiquei meu lanche e fui super bem atendida, meu lanche ficou perfeito."</p>
+                        <div class="reviewer-profile">
+                            <div class="reviewer-avatar">DS</div>
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Daiany Marcelino</span>
+                                <div class="review-meta">
+                                    <span>Google Local Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 2: Rodrigo -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Excelente atendimento, de terça-feira promoção com preços exclusivos. Refil de mate muito bom, batata à vontade... Fomos de smash salada e da casa, estavam deliciosos! O ponto da carne é ótimo e a maionese verde deles é sensacional."</p>
+                        <div class="reviewer-profile">
+                            <div class="reviewer-avatar">RH</div>
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Rodrigo HK</span>
+                                <div class="review-meta">
+                                    <span>Cliente Fiel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Review 3: Vanessa -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Que lanche perfeito! Hambúrguer gigante, super saboroso, pão macio e no ponto certo. A maionese caseira dá um toque especial indispensável. Atendimento muito educado e prestativo. Recomendo muito!"</p>
+                        <div class="reviewer-profile">
+                            <div class="reviewer-avatar">VF</div>
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Vanessa Fabiana</span>
+                                <div class="review-meta">
+                                    <span>Avaliação do Google</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 4: Luiz Augusto -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Ambiente muito bom e aconchegante, acompanhado de comidas deliciosas. O preço segue a média justa do mercado por um burger artesanal de verdade de alta qualidade. Recomendo o combo com batata canoa."</p>
+                        <div class="reviewer-profile">
+                            <div class="reviewer-avatar">LD</div>
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Luiz Augusto Macedo</span>
+                                <div class="review-meta">
+                                    <span>Avaliação do Google</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 5: Antonio Carlos -->
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Bons hambúrgueres. Pão selado bem macio, carne suculenta grelhada na medida, molhos ótimos e preços super acessíveis. O delivery chega super rápido e com os hambúrgueres ainda quentes."</p>
+                        <div class="reviewer-profile">
+                            <div class="reviewer-avatar">AI</div>
+                            <div class="reviewer-details">
+                                <span class="reviewer-name">Antonio Carlos Ignacio</span>
+                                <div class="review-meta">
+                                    <span>Cliente VIP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section class="contact-section section-padding" id="contato">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <span class="section-tag">Venha nos Visitar</span>
+                    <h2 class="section-title">Cola na Five!</h2>
+                    <p class="contact-desc">Venha saborear o verdadeiro hambúrguer artesanal no nosso espaço aconchegante na Vila Carrão ou faça o seu pedido e receba no conforto do seu sofá.</p>
+                    
+                    <div class="contact-details-list">
+                        <!-- Location -->
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div class="contact-detail-content">
+                                <span class="contact-detail-label">Endereço</span>
+                                <span class="contact-detail-val">Rua Evangelina, 473 - Vila Carrão, São Paulo - SP</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Telephone / WhatsApp -->
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 0 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+                            </div>
+                            <div class="contact-detail-content">
+                                <span class="contact-detail-label">Telefone / Whatsapp</span>
+                                <span class="contact-detail-val">
+                                    <a href="tel:551123694679">(11) 2369-4679</a> | 
+                                    <a href="https://wa.me/5511922035606" target="_blank">(11) 92203-5606</a>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Open Hours -->
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            </div>
+                            <div class="contact-detail-content">
+                                <span class="contact-detail-label">Horário de Funcionamento</span>
+                                <span class="contact-detail-val">Terça a Domingo: 18h00 às 23h30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google Maps (Dark thematic) -->
+                <div class="map-container reveal reveal-delay-2">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.4475454656643!2d-46.549247724670054!3d-23.552361678807954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e73ef59c037%3A0xe5a3c5a85ee3ecae!2sR.%20Evangelina%2C%20473%20-%20Vila%20Carr%C3%A3o%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003421-000!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#hero-section" class="logo-container">
+                        <img src="logo.png" alt="Five Burger Logo" class="logo-img">
+                        <span class="brand-name">Five Burger</span>
+                    </a>
+                    <p class="footer-brand-desc">Preparando hambúrgueres artesanais de verdade com blends de 160g suculentos.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/share/1EqagoXcvo/?mibextid=wwXIfr" target="_blank" class="social-icon" aria-label="Facebook Link">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/fiveburgersp" target="_blank" class="social-icon" aria-label="Instagram Link">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <span class="footer-col-title">Páginas</span>
+                    <ul class="footer-links">
+                        <li><a href="#hero-section">Home</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#destaques">Destaques</a></li>
+                        <li><a href="#cardapio">Nosso Cardápio</a></li>
+                        <li><a href="#contato">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <span class="footer-col-title">Fale Conosco</span>
+                    <ul class="footer-links">
+                        <li><a href="tel:551123694679">Tel: (11) 2369-4679</a></li>
+                        <li><a href="https://wa.me/5511922035606" target="_blank">Whats: (11) 92203-5606</a></li>
+                        <li><span style="font-size:14px; color:var(--text-secondary)">Rua Evangelina, 473 - Carrão</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <span class="footer-copyright">© 2026 Five Burger SP. Todos os direitos reservados.</span>
+                <a href="https://agenciabelter.com.br" target="_blank" class="developer-link">Desenvolvido por Assessoria Belter</a>
+            </div>
+        </div>
+    </footer>
+    </div> <!-- End .page-content-wrapper -->
+
+    <!-- Shopping Cart Overlay Drawer -->
+    <div class="cart-drawer-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2 class="cart-title">
+                <span>Sua Sacola</span>
+                <span class="cart-count-badge" id="cart-count">0</span>
+            </h2>
+            <button class="btn-close-cart" onclick="toggleCart()" aria-label="Fechar Sacola">
+                <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        
+        <!-- Items will be injected here via script.js -->
+        <div class="cart-items" id="cart-items-container">
+            <div class="cart-empty-state">
+                <div class="cart-empty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+                </div>
+                <h3>Sua sacola está vazia</h3>
+                <p>Navegue pelo nosso cardápio e adicione seus lanches favoritos.</p>
+            </div>
+        </div>
+        
+        <div class="cart-footer">
+            <!-- Order Type Selector (Segmented Control) -->
+            <div class="cart-order-type">
+                <span class="order-type-label">Como deseja seu pedido?</span>
+                <div class="order-type-options">
+                    <label class="order-type-btn active">
+                        <input type="radio" name="order-type" value="delivery" checked style="display: none;">
+                        <span>Delivery</span>
+                    </label>
+                    <label class="order-type-btn">
+                        <input type="radio" name="order-type" value="retirada" style="display: none;">
+                        <span>Retirada</span>
+                    </label>
+                    <label class="order-type-btn">
+                        <input type="radio" name="order-type" value="reserva" style="display: none;">
+                        <span>Reserva</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Delivery Address Input Field -->
+            <div class="cart-delivery-address" id="cart-delivery-address">
+                <label for="delivery-address-input" class="address-label">Endereço de Entrega</label>
+                <input type="text" id="delivery-address-input" class="address-input" placeholder="Rua, número, bairro, apto (opcional)...">
+            </div>
+
+            <div class="cart-summary-row">
+                <span class="cart-summary-label">Total do Pedido</span>
+                <span class="cart-total-val" id="cart-total">R$ 0,00</span>
+            </div>
+            
+            <button class="btn-checkout" onclick="checkoutWhatsApp()">
+                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.968C16.63 2.01 14.154.996 11.516.996 6.079.996 1.656 5.367 1.652 10.796c-.001 1.76.476 3.479 1.383 5.006l-.996 3.642 3.734-.972c1.479.805 3.011 1.228 4.287 1.228z"/></svg>
+                <span>Finalizar via WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal Popup -->
+    <div class="product-modal-overlay" id="product-modal-overlay"></div>
+    <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="btn-close-modal" id="btn-close-modal" aria-label="Fechar Detalhes">
+            <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="product-modal-body">
+            <div class="product-modal-img-container">
+                <img src="" alt="" id="modal-product-img" class="product-modal-img">
+            </div>
+            <div class="product-modal-info">
+                <h3 class="product-modal-title" id="modal-title"></h3>
+                <p class="product-modal-desc" id="modal-desc"></p>
+                <div class="product-modal-footer">
+                    <span class="product-modal-price" id="modal-price"></span>
+                    <button class="btn-modal-add" id="btn-modal-add">
+                        <span>Adicionar ao Pedido</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Shopping Cart Trigger Button -->
+    <button class="floating-cart-trigger" id="floating-cart-btn" onclick="toggleCart()">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="floating-cart-badge" id="floating-cart-count">0</span>
+    </button>
+
+    <!-- Javascript File -->
+    <script src="scripts.js"></script>
+</body>
+</html>
