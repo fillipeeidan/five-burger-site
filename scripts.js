@@ -31,6 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Animation frame loop to smoothly transition video currentTime
     function updateVideo() {
         if (video && !isNaN(video.duration)) {
+            // Force pause to prevent autoplay from running on its own
+            if (!video.paused) {
+                video.pause();
+            }
             // Lerp math: current = current + (target - current) * ease
             currentTime += (targetTime - currentTime) * ease;
             
@@ -47,13 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Pre-initialize video and start update loop when metadata is ready
     if (video) {
+        video.pause();
         video.addEventListener('loadedmetadata', () => {
+            video.pause();
             handleVideoScroll();
             requestAnimationFrame(updateVideo);
         });
         
         // Safety fallback if video metadata was cached
         if (video.readyState >= 1) {
+            video.pause();
             handleVideoScroll();
             requestAnimationFrame(updateVideo);
         }

@@ -2043,7 +2043,7 @@ p {
 
     .hero-content-left .hero-title {
         font-size: clamp(24px, 5.5vw, 32px); /* Scale down title size on mobile to fit nicely */
-        line-height: 0.85;
+        line-height: 0.95;
         margin-bottom: 10px;
     }
 
