@@ -1,0 +1,10 @@
+# Git auto-sync watcher and logs
+git-watcher.ps1
+git-watcher.log
+iniciar-sincronizacao.bat
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
