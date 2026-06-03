@@ -111,6 +111,10 @@ p {
     background-color: var(--bg-deep);
 }
 
+.mobile-br {
+    display: none;
+}
+
 /* ==========================================================================
    NAVIGATION BAR (Liquid Glass)
    ========================================================================== */
@@ -2042,8 +2046,12 @@ p {
         transform: translateY(-35px); /* Shift content block slightly higher on mobile */
     }
 
+    .mobile-br {
+        display: inline;
+    }
+
     .hero-content-left .hero-title {
-        font-size: clamp(35px, 6.5vw, 42px); /* Scale down title size on mobile to fit nicely */
+        font-size: clamp(32px, 6.5vw, 38px); /* Scale down title size on mobile to fit nicely */
         line-height: 0.95;
         margin-bottom: 10px;
     }
